@@ -17,4 +17,9 @@ class Job extends Model
     ];
 
     protected $table = 'jobs';
+
+    public function applicants()
+    {
+        return $this->belongsToMany(applicant::class);
+    }
 }

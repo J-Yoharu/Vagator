@@ -14,7 +14,11 @@ class JobController extends Controller
 
     public function show(Request $request)
     {
-        return response()->json(Job::find($request->id));
+        $jobs = Job::find($request->id);
+        foreach ($jobs->applicants as $applicants) {
+            dd($applicants->pivot);
+        }
+        // return response()->json(Job::find($request->id));
     }
 
     public function store(Request $request)

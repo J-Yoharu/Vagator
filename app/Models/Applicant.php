@@ -12,4 +12,9 @@ class Applicant extends Model
     protected $fillable = ['name','surname','email','phone'];
     
     protected $table = 'applicants';
+
+    public function jobs()
+    {
+        return $this->belongsToMany(Job::class);
+    }
 }

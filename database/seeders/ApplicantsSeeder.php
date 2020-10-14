@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Applicant;
+use App\Models\Job;
 
 class ApplicantsSeeder extends Seeder
 {
@@ -15,7 +16,7 @@ class ApplicantsSeeder extends Seeder
     public function run()
     {
         Applicant::factory()
-            ->count(10)
+            ->count(10)->has(Job::factory())
             ->create();
     }
 }

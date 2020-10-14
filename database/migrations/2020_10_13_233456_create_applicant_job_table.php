@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateJobsApplicantsTable extends Migration
+class CreateApplicantJobTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateJobsApplicantsTable extends Migration
      */
     public function up()
     {
-        Schema::create('jobs_applicants', function (Blueprint $table) {
+        Schema::create('applicant_job', function (Blueprint $table) {
             $table->id();
             $table->foreignId('applicant_id')
                 ->constrained('applicants')
@@ -34,6 +34,6 @@ class CreateJobsApplicantsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jobs_applicants');
+        Schema::dropIfExists('applicant_job');
     }
 }

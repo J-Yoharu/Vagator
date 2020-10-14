@@ -25,7 +25,7 @@ class ApplicantFactory extends Factory
         $phone = $this->faker->randomNumber($nbDigits = 9);
         return [
             'name' => $this->faker->name(),
-            'surname' => $this->faker->name(),
+            'surname' => $this->faker->lastName(),
             'email' => $this->faker->safeEmail(),
             'phone' => $ddd.$phone
         ];
