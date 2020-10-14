@@ -20,6 +20,12 @@ class Job extends Model
 
     public function applicants()
     {
-        return $this->belongsToMany(applicant::class);
+        return $this->belongsToMany(Applicant::class)->using(JobApplicantAttachment::class);
+    }
+
+    public function applicantAttachments()
+    {
+        return $this->belongsToMany(applicant::class)
+            ->using(JobApplicantAttachment::class);
     }
 }

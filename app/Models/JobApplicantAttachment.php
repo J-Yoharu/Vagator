@@ -3,18 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class JobApplicantAttachment extends Model
+class JobApplicantAttachment extends Pivot
 {
     use HasFactory;
 
-    protected $fillable = ['applicant_id','job_id','attachment'];
+    protected $fillable = ['applicant_id', 'job_id','attachment'];
 
     protected $table = 'jobs_applicant_attachments';
-
-    public function jobs()
-    {
-        return $this->hasMany(Jobs::class);
-    }
 }

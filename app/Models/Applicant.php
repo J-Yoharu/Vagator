@@ -9,12 +9,17 @@ class Applicant extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name','surname','email','phone'];
+    protected $fillable = ['name', 'surname', 'email', 'phone'];
     
     protected $table = 'applicants';
 
     public function jobs()
     {
         return $this->belongsToMany(Job::class);
+    }
+
+    public function jobAttachments()
+    {
+        return $this->belongsToMany(Job::class,'jobs_applicant_attachments');
     }
 }
