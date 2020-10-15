@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\ApplicantController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,4 +26,8 @@ Route::prefix('jobs')->group(function(){
     Route::post('/',[JobController::class, 'store']);
     Route::put('/{id}',[JobController::class, 'update']);
     Route::delete('/{id}',[JobController::class, 'delete']);
+});
+
+Route::prefix('applicant')->group(function(){
+    Route::post('/',[ApplicantController::class, 'store']);
 });
