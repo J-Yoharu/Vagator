@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\ApplicantController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
