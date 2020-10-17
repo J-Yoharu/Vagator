@@ -45,4 +45,25 @@ class JobController extends Controller
         }
         return response()->json(['error' => 'Vaga inexistente']);
     }
+    public function filter()
+    {   
+        $actuation = Job::select('actuation_field')->groupBy('actuation_field')->get()
+            ->map(function($item) {
+                return $item['actuation_field'];
+            });
+        $locales = Job::select('locale')->groupBy('locale')->get()
+            ->map(function($item) {
+                return $item['locale'];
+            });
+        $types = Job::select('job_type')->groupBy('job_type')->get()
+            ->map(function($item) {
+                return $item['job_type'];
+            });    
+        return response()->json(
+            ['actuations' => $actuation,
+            'locales' => $locales,
+            'types' => $types
+            ]
+        );
+    }
 }

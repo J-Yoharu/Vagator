@@ -19,6 +19,8 @@ class CreateApplicantsTable extends Migration
             $table->string('surname');
             $table->string('email');
             $table->bigInteger('phone');
+            $table->longText('why_hire');
+            $table->string('knows');
             $table->timestamps();
         });
     }

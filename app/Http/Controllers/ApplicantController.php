@@ -12,8 +12,6 @@ class ApplicantController extends Controller
     public function store(Request $request)
     {
         try {
-         
-
             if (Job::find($request->job_id)) {
                 DB::beginTransaction();
 
@@ -25,7 +23,6 @@ class ApplicantController extends Controller
                 return response()->json($applicant);
             }
             return response()->json(['error' => 'A vaga não está mais disponível']);
-            
         } catch(Exception $ex) {
             DB::rollBack();
         }

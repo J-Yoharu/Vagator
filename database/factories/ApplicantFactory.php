@@ -27,7 +27,9 @@ class ApplicantFactory extends Factory
             'name' => $this->faker->name(),
             'surname' => $this->faker->lastName(),
             'email' => $this->faker->safeEmail(),
-            'phone' => $ddd.$phone
+            'phone' => $ddd.$phone,
+            'why_hire' => $this->faker->text(200),
+            'knows' => $this->faker->name()
         ];
     }
 }

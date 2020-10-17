@@ -9,7 +9,7 @@ class Applicant extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'surname', 'email', 'phone'];
+    protected $fillable = ['name', 'surname', 'email', 'phone', 'why_hire', 'knows'];
     
     protected $table = 'applicants';
 
