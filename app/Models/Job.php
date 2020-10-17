@@ -11,9 +11,11 @@ class Job extends Model
 
     protected $fillable = [
         'title',
-        'actuation_field',
-        'locale','job_type',
-        'is_remote','description'
+        'department_id',
+        'locale_id',
+        'type_id',
+        'is_remote',
+        'description'
     ];
 
     protected $table = 'jobs';
@@ -25,6 +27,22 @@ class Job extends Model
 
     public function applicantAttachments()
     {
-        return $this->belongsToMany(applicant::class,'jobs_applicant_attachments');
+        return $this->belongsToMany(Applicant::class,'jobs_applicant_attachments');
     }
+
+    public function department()
+    {
+        return $this->belongsTo(Department::class);
+    }
+
+    public function locale()
+    {
+        return $this->belongsTo(Locale::class);
+    }
+
+    public function type()
+    {
+        return $this->belongsTo(Type::class);
+    }
+    
 }

@@ -2,13 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Job;
-use App\Models\Applicant;
-
-
 use Illuminate\Database\Seeder;
+use App\Models\Locale;
 
-class JobsSeeder extends Seeder
+class LocalesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,6 +14,6 @@ class JobsSeeder extends Seeder
      */
     public function run()
     {
-        Job::factory()->count(10)->create();
+        Locale::factory()->count(10)->create();
     }
 }

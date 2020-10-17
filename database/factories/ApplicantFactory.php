@@ -29,7 +29,7 @@ class ApplicantFactory extends Factory
             'email' => $this->faker->safeEmail(),
             'phone' => $ddd.$phone,
             'why_hire' => $this->faker->text(200),
-            'knows' => $this->faker->name()
+            'knows' => $this->faker->name(),
         ];
     }
 }
