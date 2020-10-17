@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Job;
+use App\Models\Department;
+use App\Models\Locale;
+use App\Models\Type;
 
 class JobController extends Controller
 {
     public function index()
     {
-        return response()->json(Job::all());
+        return response()->json(Job::with('department','locale','type')->get());
     }
 
     public function show(Request $request)
@@ -18,7 +21,7 @@ class JobController extends Controller
         // foreach ($jobs->applicants as $applicants) {
         //     dd($applicants->pivot);
         // }
-        return response()->json(Job::find($request->id));
+        return response()->json(Job::with('department','locale','type')->find($request->id));
     }
 
     public function store(Request $request)
@@ -46,23 +49,17 @@ class JobController extends Controller
         return response()->json(['error' => 'Vaga inexistente']);
     }
     public function filter()
-    {   
-        $actuation = Job::select('actuation_field')->groupBy('actuation_field')->get()
-            ->map(function($item) {
-                return $item['actuation_field'];
-            });
-        $locales = Job::select('locale')->groupBy('locale')->get()
-            ->map(function($item) {
-                return $item['locale'];
-            });
-        $types = Job::select('job_type')->groupBy('job_type')->get()
-            ->map(function($item) {
-                return $item['job_type'];
-            });    
+    {
+ 
+        $departments = Department::select('id','department')->get();
+        $locales = Locale::select('id','locale')->get();
+        $types = Type::select('id','type')->get();
+ 
         return response()->json(
-            ['actuations' => $actuation,
-            'locales' => $locales,
-            'types' => $types
+            [
+                'departments' => $departments,
+                'locales' => $locales,
+                'types' => $types
             ]
         );
     }
