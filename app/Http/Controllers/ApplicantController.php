@@ -6,17 +6,20 @@ use Illuminate\Http\Request;
 use App\Models\Applicant;
 use App\Models\Job;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
 
 class ApplicantController extends Controller
 {
     public function store(Request $request)
     {
+        $file = $request->file('file')->store('');
+
         try {
             if (Job::find($request->job_id)) {
                 DB::beginTransaction();
 
                 $applicant = Applicant::create($request->all());
-                $applicant->jobAttachments()->attach($request->job_id,['attachment' => 'teste']);
+                $applicant->jobAttachments()->attach($request->job_id,['attachment' => $file]);
                 $applicant->jobs()->attach($request->job_id);
                 
                 DB::commit();
