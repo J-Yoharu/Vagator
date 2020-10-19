@@ -16,9 +16,9 @@ class ApplicantsSeeder extends Seeder
      */
     public function run()
     {
-        Applicant::factory()->count(10)
-            ->has(Job::factory()->count(2))
-            ->hasJobAttachments()
-            ->create();
+       dd(Applicant::factory()->count(10)
+            ->hasJobs(2)
+            // ->hasJobAttachments(['attachment' => 'Teste'])
+            ->make());
     }
 }

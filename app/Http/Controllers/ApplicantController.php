@@ -25,7 +25,7 @@ class ApplicantController extends Controller
                 DB::commit();
                 return response()->json($applicant);
             }
-            return response()->json(['error' => 'A vaga não está mais disponível']);
+            return response()->json(['error' => 'A vaga não está mais disponível'],404);
         } catch(Exception $ex) {
             DB::rollBack();
         }

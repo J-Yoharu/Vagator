@@ -21,16 +21,23 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::prefix('jobs')->group(function(){
-    Route::get('/', [JobController::class, 'index']);
-    Route::get('/{id}', [JobController::class, 'show']);
+Route::middleware('auth:sanctum')->prefix('jobs')->group(function(){
     Route::post('/', [JobController::class, 'store']);
     Route::put('/{id}', [JobController::class, 'update']);
     Route::delete('/{id}', [JobController::class, 'delete']);
+});
+
+Route::prefix('jobs')->group(function(){
+    Route::get('/filters', [JobController::class, 'filters']);
+    Route::get('/search', [JobController::class, 'search']);
+    Route::get('/', [JobController::class, 'index']);
+    Route::get('/{id}', [JobController::class, 'show']);
 });
 
 Route::prefix('applicant')->group(function(){
     Route::post('/',[ApplicantController::class, 'store']);
 });
 
-Route::get('/filter', [JobController::class, 'filter']);
+Route::post('login',[LoginController::class,'login']);
+Route::post('logout',[LoginController::class,'logout']);
+

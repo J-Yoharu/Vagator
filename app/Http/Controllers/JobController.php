@@ -11,8 +11,8 @@ use App\Models\Type;
 class JobController extends Controller
 {
     public function index()
-    {
-        return response()->json(Job::with('department','locale','type')->get());
+    {   
+        return response()->json(Job::with('department','locale','type')->orderBy('created_at', 'desc')->paginate(10));
     }
 
     public function show(Request $request)
@@ -48,9 +48,8 @@ class JobController extends Controller
         }
         return response()->json(['error' => 'Vaga inexistente']);
     }
-    public function filter()
+    public function filters()
     {
- 
         $departments = Department::select('id','department')->get();
         $locales = Locale::select('id','locale')->get();
         $types = Type::select('id','type')->get();
@@ -62,5 +61,24 @@ class JobController extends Controller
                 'types' => $types
             ]
         );
+    }
+    public function search(Request $request)
+    {   
+
+        $jobs = Job::with('department','locale','type')->where('title','like','%'. $request->title .'%');
+        
+        if($request->remote == 'true'){
+            $jobs->where('is_remote',1);
+        }
+        if($request->department != null){
+            $jobs->where('department_id', $request->department);
+        }
+        if($request->type != null){
+            $jobs->where('type_id', $request->type);
+        }
+        if($request->locale != null){
+            $jobs->where('locale_id', $request->locale);
+        }
+        return response()->json($jobs->orderBy('created_at','desc')->paginate(10));
     }
 }

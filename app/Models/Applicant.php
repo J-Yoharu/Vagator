@@ -20,6 +20,6 @@ class Applicant extends Model
 
     public function jobAttachments()
     {
-        return $this->belongsToMany(Job::class,'jobs_applicant_attachments');
+        return $this->belongsToMany(JobApplicantAttachment::class);
     }
 }
