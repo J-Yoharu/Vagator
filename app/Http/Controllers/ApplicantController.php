@@ -7,7 +7,9 @@ use App\Http\Requests\StoreApplicantRequest;
 use App\Models\Applicant;
 use App\Models\Job;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Carbon;
+use App\Mail\SendMailUser;
 
 class ApplicantController extends Controller
 {
@@ -26,6 +28,7 @@ class ApplicantController extends Controller
                 $applicant->jobs()->create($request->all());
                 
                 DB::commit();
+                // Mail::to('jonathas_a.a@hotmail.com')->send(new SendMailUser($applicant));
                 return response()->json(['success' => 'Sua inscrição foi enviada com sucesso!']);
             }
             return response()->json(['error' => 'A vaga não está mais disponível'],404);
