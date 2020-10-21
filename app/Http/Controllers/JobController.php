@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\JobRequest;
 use App\Models\Job;
 use App\Models\Department;
 use App\Models\Locale;
@@ -20,7 +21,7 @@ class JobController extends Controller
         return response()->json(Job::with('department','locale','type')->find($request->id));
     }
 
-    public function store(Request $request)
+    public function store(JobRequest $request)
     {
         try{
             Job::create($request->all());
@@ -30,7 +31,7 @@ class JobController extends Controller
         }
     }
 
-    public function update(Request $request)
+    public function update(JobRequest $request)
     {   
         $job = Job::find($request->id);
         if ($job) {

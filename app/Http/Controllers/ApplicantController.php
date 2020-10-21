@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreApplicantRequest;
 use App\Models\Applicant;
 use App\Models\Job;
 use Illuminate\Support\Facades\DB;
@@ -10,7 +11,7 @@ use Illuminate\Support\Carbon;
 
 class ApplicantController extends Controller
 {
-    public function store(Request $request)
+    public function store(StoreApplicantRequest $request)
     {
         $file = $request->file('file')->store('');
         try {

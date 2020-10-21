@@ -26,13 +26,10 @@ A partir da raiz do projeto, você terá que seguir os passos abaixo para que tu
 ```
 composer install
 ```
-**Instalar dependências da parte do JS:**
-```
-npm install
-```
+
 **Criar um arquivo `.env` na raiz do projeto contendo suas conexões de banco de dados.**
 
-Neste repositório há um exemplo de `.env` em `.env.example` se preferir renomeie o arquivo `.env.example` para `.env` e faça a configuração do banco de dados.
+Neste repositório há um exemplo de `.env` em `.env.example` se preferir renomeie o arquivo de `.env.example` para `.env` e faça a configuração do banco de dados.
 
 - DB_CONNECTION=*mysql*
 - DB_HOST= *host que está rodando seu banco de dados ex: 127.0.0.1* 
@@ -48,12 +45,22 @@ Após configurar o `.env`, execute o comando abaixo para criar toda estrutura do
 ```
 php artisan migrate
 ```
+**Popular o banco de dados**
 
-**Compilar assets**
-
-Para gerar o primeiro build do projeto utilizar o comando:
+Para popular o bando de dados, execute o comando:
 ```
-npm run dev
+php artisan db:seed
+```
+Com o comando acima, foi criado um usuário padrão, sinta-se livre para usa-lo.
+
+- usuário = *john.doe@example.com*
+- Senha = *123* 
+
+**Rodar servidor**
+
+Executar o comando abaixo para iniciar o servidor do backend:
+```
+php artisan serve --host=127.0.0.1
 ```
 
 **Visualizando o projeto**

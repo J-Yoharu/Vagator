@@ -16,7 +16,7 @@ class Job extends Model
         'type_id',
         'is_remote',
         'description',
-        'user_id'
+        'user_id',
     ];
 
     protected $table = 'jobs';
