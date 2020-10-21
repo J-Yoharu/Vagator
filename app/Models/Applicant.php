@@ -15,11 +15,11 @@ class Applicant extends Model
 
     public function jobs()
     {
-        return $this->belongsToMany(Job::class);
+        return $this->hasOne(ApplicantJob::class);
     }
 
-    public function jobAttachments()
+    public function attachments()
     {
-        return $this->belongsToMany(JobApplicantAttachment::class);
+        return $this->hasMany(JobApplicantAttachment::class);
     }
 }

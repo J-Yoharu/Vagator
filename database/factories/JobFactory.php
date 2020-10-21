@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Department;
 use App\Models\Locale;
 use App\Models\Type;
+use App\Models\User;
 
 class JobFactory extends Factory
 {
@@ -26,6 +27,7 @@ class JobFactory extends Factory
     {
         return [
             'title' => $this->faker->text(30),
+            'user_id' => User::select('id')->inRandomOrder()->first(),
             'department_id' => Department::select('id')->inRandomOrder()->first(),
             'locale_id' => Locale::select('id')->inRandomOrder()->first(),
             'type_id' => Type::select('id')->inRandomOrder()->first(),

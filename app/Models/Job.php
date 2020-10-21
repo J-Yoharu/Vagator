@@ -15,19 +15,15 @@ class Job extends Model
         'locale_id',
         'type_id',
         'is_remote',
-        'description'
+        'description',
+        'user_id'
     ];
 
     protected $table = 'jobs';
 
     public function applicants()
     {
-        return $this->belongsToMany(Applicant::class);
-    }
-
-    public function applicantAttachments()
-    {
-        return $this->belongsToMany(Applicant::class,'jobs_applicant_attachments');
+        return $this->hasMany(Applicant::class);
     }
 
     public function department()

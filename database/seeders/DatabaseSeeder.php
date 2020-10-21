@@ -17,9 +17,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Locale::factory()->count(10)->create();
-        Type::factory()->count(10)->create();
-        Department::factory()->count(10)->create();
-        Job::factory()->count(10)->create();
+        try{
+            Locale::factory()->count(10)->create();
+            Type::factory()->count(10)->create();
+            Department::factory()->count(10)->create();
+            $this->call([UsersSeeder::class]);
+            Job::factory()->count(10)->create();
+        }catch(Exception $ex){
+            dd($ex->getFile());
+        }
     }
 }

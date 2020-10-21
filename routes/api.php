@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\ApplicantController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LocaleController;
+use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\TypeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +41,10 @@ Route::prefix('applicant')->group(function(){
     Route::post('/',[ApplicantController::class, 'store']);
 });
 
-Route::post('login',[LoginController::class,'login']);
-Route::post('logout',[LoginController::class,'logout']);
+Route::get('locales', [LocaleController::class, 'index']);
+Route::get('types', [TypeController::class, 'index']);
+Route::get('departments', [DepartmentController::class, 'index']);
+
+Route::post('login', [LoginController::class, 'login']);
+Route::post('logout', [LoginController::class, 'logout']);
 

@@ -17,16 +17,17 @@ class JobController extends Controller
 
     public function show(Request $request)
     {
-        // $jobs = Job::find($request->id);
-        // foreach ($jobs->applicants as $applicants) {
-        //     dd($applicants->pivot);
-        // }
         return response()->json(Job::with('department','locale','type')->find($request->id));
     }
 
     public function store(Request $request)
     {
-        return response()->json(Job::create($request->all()));
+        try{
+            Job::create($request->all());
+            return response()->json(['success' => 'O cadastro foi efetuado com sucesso!']);
+        }catch(Exception $ex) {
+            return response()->json(['error' => 'Erro para inserir '],400);
+        }
     }
 
     public function update(Request $request)
@@ -51,7 +52,7 @@ class JobController extends Controller
     public function filters()
     {
         $departments = Department::select('id','department')->get();
-        $locales = Locale::select('id','locale')->get();
+        $locales = Locale::select('id','country', 'state', 'city')->get();
         $types = Type::select('id','type')->get();
  
         return response()->json(
@@ -64,9 +65,8 @@ class JobController extends Controller
     }
     public function search(Request $request)
     {   
-
         $jobs = Job::with('department','locale','type')->where('title','like','%'. $request->title .'%');
-        
+
         if($request->remote == 'true'){
             $jobs->where('is_remote',1);
         }
@@ -79,6 +79,7 @@ class JobController extends Controller
         if($request->locale != null){
             $jobs->where('locale_id', $request->locale);
         }
+        
         return response()->json($jobs->orderBy('created_at','desc')->paginate(10));
     }
 }

@@ -12,4 +12,6 @@ class Locale extends Model
     protected $fillable = ['locale'];
 
     protected $table = 'locales';
+
+    protected $hidden = ['created_at','updated_at',];
 }

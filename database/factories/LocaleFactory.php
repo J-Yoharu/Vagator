@@ -22,7 +22,9 @@ class LocaleFactory extends Factory
     public function definition()
     {
         return [
-            'locale' => $this->faker->city()
+            'country' => $this->faker->country(),
+            'state' => $this->faker->state(),
+            'city' => $this->faker->city(),
         ];
     }
 }
