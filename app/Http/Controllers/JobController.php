@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\JobRepository;
 use Illuminate\Http\Request;
 use App\Http\Requests\JobRequest;
 use App\Models\Job;
@@ -11,14 +12,21 @@ use App\Models\Type;
 
 class JobController extends Controller
 {
+    private $job;
+
+    public function __construct(JobRepository $jobRepository)
+    {
+        $this->job = $jobRepository;
+    }
+
     public function index()
-    {   
-        return response()->json(Job::with('department','locale','type')->orderBy('created_at', 'desc')->paginate(10));
+    {
+        return response()->json($this->job->all()->paginate(10));
     }
 
     public function show(Request $request)
     {
-        return response()->json(Job::with('department','locale','type')->find($request->id));
+        return response()->json($this->job->findById($request->id));
     }
 
     public function store(JobRequest $request)
@@ -32,7 +40,7 @@ class JobController extends Controller
     }
 
     public function update(JobRequest $request)
-    {   
+    {
         $job = Job::find($request->id);
         if ($job) {
             $job->update($request->all());
@@ -55,7 +63,7 @@ class JobController extends Controller
         $departments = Department::select('id','department')->get();
         $locales = Locale::select('id','country', 'state', 'city')->get();
         $types = Type::select('id','type')->get();
- 
+
         return response()->json(
             [
                 'departments' => $departments,
@@ -65,7 +73,7 @@ class JobController extends Controller
         );
     }
     public function search(Request $request)
-    {   
+    {
         $jobs = Job::with('department','locale','type')->where('title','like','%'. $request->title .'%');
 
         if($request->remote == 'true'){
@@ -80,7 +88,7 @@ class JobController extends Controller
         if($request->locale != null){
             $jobs->where('locale_id', $request->locale);
         }
-        
+
         return response()->json($jobs->orderBy('created_at','desc')->paginate(10));
     }
 }
