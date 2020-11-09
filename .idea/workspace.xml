@@ -20,17 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aa203769-381a-421f-8172-5433826f336b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/QueryFilters/DepartmentId.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/QueryFilters/Filter.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/QueryFilters/IsRemote.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/QueryFilters/LocaleId.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/QueryFilters/Title.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/QueryFilters/TypeId.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Repositories/JobRepositoryInterface.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/JobController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/JobController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Repositories/JobRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/JobRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/JobRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/JobRepositoryInterface.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

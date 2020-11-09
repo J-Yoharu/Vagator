@@ -10,9 +10,11 @@ interface JobRepositoryInterface
 
     public function create($data);
 
-    public function update($data);
+    public function update($id);
 
     public function delete($id);
 
-    public function filters();
+    public function getFilters();
+
+    public function filter();
 }

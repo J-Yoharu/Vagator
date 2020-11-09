@@ -8,6 +8,7 @@ use App\Models\Department;
 use App\Models\Job;
 use App\Models\Locale;
 use App\Models\Type;
+use Illuminate\Pipeline\Pipeline;
 
 class JobRepository implements JobRepositoryInterface
 {
@@ -23,20 +24,35 @@ class JobRepository implements JobRepositoryInterface
 
     public function create($data)
     {
-        Job::create($data);
+        try{
+            Job::create($data);
+            return ['success' => 'O cadastro foi efetuado com sucesso!'];
+        }catch(Exception $ex) {
+            return ['error' => 'Erro para inserir '];
+        }
     }
 
-    public function update($data)
+    public function update($id)
     {
-        Job::update($data);
+        $job = Job::find($id);
+        if ($job) {
+            $job->update(request()->all());
+            return $job;
+        }
+        return ['error' => 'Vaga inexistente'];
     }
 
     public function delete($id)
     {
-        Job::delete($id);
+        $job = Job::find($id);
+        if ($job) {
+            $job->delete($id);
+            return $job;
+        }
+        return ['error' => 'Vaga inexistente'];
     }
 
-    public function filters()
+    public function getFilters()
     {
         $departments = Department::select('id','department')->get();
         $locales = Locale::select('id','country', 'state', 'city')->get();
@@ -47,5 +63,18 @@ class JobRepository implements JobRepositoryInterface
             'locales' => $locales,
             'types' => $types
         ];
+    }
+
+    public function filter(){
+        return app(Pipeline::class)
+            ->send(Job::with('department','locale','type'))
+            ->through([
+                \App\QueryFilters\Title::class,
+                \App\QueryFilters\IsRemote::class,
+                \App\QueryFilters\DepartmentId::class,
+                \App\QueryFilters\TypeId::class,
+                \App\QueryFilters\LocaleId::class,
+            ])
+            ->thenReturn();
     }
 }
