@@ -21,21 +21,22 @@
   <component name="ChangeListManager">
     <list default="true" id="aa203769-381a-421f-8172-5433826f336b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/JobController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/JobController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/JobRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/JobRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/JobRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/JobRepositoryInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Job.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Job.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -183,6 +184,8 @@
       <option name="presentableId" value="Default" />
       <updated>1604934292236</updated>
       <workItem from="1604934293695" duration="3699000" />
+      <workItem from="1605010329654" duration="1197000" />
+      <workItem from="1605041687499" duration="874000" />
     </task>
     <servers />
   </component>
@@ -199,6 +202,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1217" y="257" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1604954204695">
