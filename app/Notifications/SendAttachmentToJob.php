@@ -16,9 +16,13 @@ class SendAttachmentToJob extends Notification
      *
      * @return void
      */
-    public function __construct()
+    protected $applicant;
+    protected $url;
+
+    public function __construct($applicant, $url)
     {
-        //
+        $this->applicant = $applicant;
+        $this->url = $url;
     }
 
     /**
@@ -41,7 +45,8 @@ class SendAttachmentToJob extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
+                    ->from('mail@example.com')
+                    ->line('The introduction to the notification.'. $this->applicant .''. $this->url)
                     ->action('Notification Action', url('/'))
                     ->line('Thank you for using our application!');
     }

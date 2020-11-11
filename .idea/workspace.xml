@@ -22,6 +22,10 @@
     <list default="true" id="aa203769-381a-421f-8172-5433826f336b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ApplicantController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ApplicantController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Applicant.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Applicant.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Notifications/SendAttachmentToJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Notifications/SendAttachmentToJob.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,10 +161,12 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_MARK_IGNORED_FILES_AS_EXCLUDED" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -185,7 +191,8 @@
       <updated>1604934292236</updated>
       <workItem from="1604934293695" duration="3699000" />
       <workItem from="1605010329654" duration="1197000" />
-      <workItem from="1605041687499" duration="1501000" />
+      <workItem from="1605041687499" duration="1762000" />
+      <workItem from="1605043979166" duration="7115000" />
     </task>
     <servers />
   </component>
@@ -217,5 +224,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="978" y="228" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1604956323545" />
+    <state x="461" y="165" key="SettingsEditor" timestamp="1605044218151">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1605044218151" />
   </component>
 </project>

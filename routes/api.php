@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\User;
+use App\Notifications\SendAttachmentToJob;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JobController;
@@ -48,3 +50,17 @@ Route::get('departments', [DepartmentController::class, 'index']);
 Route::post('login', [LoginController::class, 'login']);
 Route::post('logout', [LoginController::class, 'logout']);
 
+Route::get('teste', function(){
+   $user = User::find(1);
+   $user->notify( new SendAttachmentToJob($user->name));
+});
+
+Route::get('curriculum/{filename}', function($filename){
+
+    if( Storage::exists('curriculum/'.$filename) ){
+        $file = Storage::path('curriculum/'. $filename);
+        return response()->file($file);
+    }
+    return response()->json(["error" => "Arquivo não existente :("], 404);
+
+});

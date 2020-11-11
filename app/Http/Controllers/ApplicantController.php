@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Notifications\SendAttachmentToJob;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreApplicantRequest;
 use App\Models\Applicant;
@@ -10,12 +11,14 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Carbon;
 use App\Mail\SendMailUser;
+use Illuminate\Support\Facades\Storage;
 
 class ApplicantController extends Controller
 {
     public function store(StoreApplicantRequest $request)
     {
-        $file = $request->file('file')->store('');
+        $file = $request->file('file')->store('curriculum');
+        $url = Storage::url($file);
         try {
             if (Job::find($request->job_id)) {
                 DB::beginTransaction();
@@ -26,15 +29,16 @@ class ApplicantController extends Controller
                     'attachment' => $file
                 ]);
                 $applicant->jobs()->create($request->all());
-                
+
                 DB::commit();
-                // Mail::to('jonathas_a.a@hotmail.com')->send(new SendMailUser($applicant));
+
+                $applicant->notify( new SendAttachmentToJob( $applicant, $url ));
                 return response()->json(['success' => 'Sua inscrição foi enviada com sucesso!']);
             }
             return response()->json(['error' => 'A vaga não está mais disponível'],404);
         } catch(Exception $ex) {
             DB::rollBack();
         }
-        
+
     }
 }
